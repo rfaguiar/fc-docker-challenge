@@ -18,10 +18,17 @@ connection.end()
 
 app.get('/', (req,res) => {
     const connection = mysql.createConnection(config)
-    connection.query('SELECT name FROM people', (error, results) => res.send(`<h1>Full Cycle</h1><h2>${results[0].name}</h2>`))
+    connection.query('SELECT name FROM people', (error, results) => res.send(print(results)))
     connection.end()
     
 })
+
+const print = results => {    
+    return `<h1>Full Cycle Rocks!</h1>
+            <ul>
+                ${results.map(e => `<li>${e.name}</li>`)}
+            </ul>`
+}
 
 app.listen(port, ()=> {
     console.log('Rodando na porta ' + port)

@@ -12,8 +12,8 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 COPY index.js .
 COPY package.json .
 
-RUN npm i
+RUN npm install
 
 EXPOSE 3000
 
-# CMD ["node","index.js"]
+CMD ["node","index.js"]
